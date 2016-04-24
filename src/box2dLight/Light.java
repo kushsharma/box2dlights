@@ -66,7 +66,7 @@ public abstract class Light implements Disposable {
 	 * @param color
 	 *            light color
 	 * @param distance
-	 *            light distance (if applicable)
+	 *            light distance (if applicable), soft shadow length is set to distance * 0.1f
 	 * @param directionDegree
 	 *            direction in degrees (if applicable) 
 	 */
@@ -77,6 +77,7 @@ public abstract class Light implements Disposable {
 		setRayNum(rays);
 		setColor(color);
 		setDistance(distance);
+		setSoftnessLength(distance * 0.1f);
 		setDirection(directionDegree);
 	}
 
@@ -350,6 +351,14 @@ public abstract class Light implements Disposable {
 	 */
 	public float getDistance() {
 		return distance / RayHandler.gammaCorrectionParameter;
+	}
+
+
+	/**
+	 * @return direction in degrees (0 if not applicable)
+	 */
+	public float getDirection(){
+		return direction;
 	}
 
 	/**
